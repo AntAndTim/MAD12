@@ -9,7 +9,7 @@ import javax.persistence.*
 class Card {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     var id: Long? = null
     
     @Column
