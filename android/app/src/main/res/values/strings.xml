@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Mad12</string>
+    <string name="done_button_text">Done</string>
 </resources>
