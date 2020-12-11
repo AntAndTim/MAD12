@@ -6,34 +6,22 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 import me.antandtim.mad12.card.adapter.CardAdapter
-import me.antandtim.mad12.card.model.Card
-import java.util.stream.Collectors
-import java.util.stream.IntStream
+import me.antandtim.mad12.card.network.BaseClient.CARD_API_CLIENT
+import me.antandtim.mad12.card.network.CardGetCallback
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val mutableListOf = mutableListOf<Card>()
-
-        for (i in 0..20) {
-            mutableListOf.add(
-                Card(
-                    "Name$i",
-                    "Description",
-                    "date",
-                    true
-                )
-            )
-        }
-
         cardRecycler.apply {
-            adapter = CardAdapter(this@MainActivity).apply {
-                submitList(mutableListOf)
-            }
+            adapter = cardAdapter()
             layoutManager = GridLayoutManager(this@MainActivity, 1)
             itemAnimator = DefaultItemAnimator()
         }
+    }
+
+    private fun cardAdapter() = CardAdapter(this@MainActivity).apply {
+        CARD_API_CLIENT.get().enqueue(CardGetCallback(this, this@MainActivity))
     }
 }
