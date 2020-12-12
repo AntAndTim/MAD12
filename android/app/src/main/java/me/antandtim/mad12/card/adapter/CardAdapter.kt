@@ -37,14 +37,17 @@ class CardViewHolder(itemView: View, private val mainActivity: MainActivity) :
 
     fun bind(card: Card) {
         itemView.cardName.text = card.name
-        itemView.cardDescription.text = card.description
+        if (card.description.isBlank()) {
+            itemView.cardDescription.visibility = View.GONE
+        } else {
+            itemView.cardDescription.text = card.description
+        }
+
         if (card.completed != true) {
             bindExpireDate(card, mainActivity)
         } else {
             itemView.timeLeft.visibility = View.GONE
         }
-        itemView.completed.isChecked = card.completed ?: false
-        itemView.completed.isEnabled = false
 
         itemView.setOnClickListener {
             mainActivity.startActivity(
@@ -63,10 +66,7 @@ class CardViewHolder(itemView: View, private val mainActivity: MainActivity) :
         mainActivity: MainActivity
     ) = object : ExpirationBinder {
         override fun bind(expirationTime: String) {
-            itemView.timeLeft.text = mainActivity.getString(
-                R.string.card_time_left_text,
-                expirationTime.substring(0, expirationTime.length - 3)
-            )
+            itemView.timeLeft.text = expirationTime.split(":").let { "${it[0]}h ${it[1]}m" }
         }
     }.bindExpireDate(card.expireDate ?: Instant.now(), interval = 60000).start()
 }

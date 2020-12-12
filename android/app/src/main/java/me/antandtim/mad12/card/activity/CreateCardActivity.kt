@@ -1,6 +1,8 @@
 package me.antandtim.mad12.card.activity
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_create_card.*
 import me.antandtim.mad12.R
@@ -19,6 +21,7 @@ class CreateCardActivity : AppCompatActivity() {
             setDisplayHomeAsUpEnabled(true)
             setDisplayShowHomeEnabled(true)
         }
+
         createCardButton.setOnClickListener {
             it.isEnabled = false
             CARD_API_CLIENT.create(
@@ -28,6 +31,21 @@ class CreateCardActivity : AppCompatActivity() {
                 )
             ).enqueue(CardCreateCallback(this))
         }
+
+        createCardName.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                createCardButton.isEnabled = s!!.isNotBlank()
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+
+        })
     }
 
     fun onSuccess() {
