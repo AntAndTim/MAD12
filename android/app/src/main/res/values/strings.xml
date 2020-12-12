@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Mad12</string>
     <string name="done_button_text">Done</string>
+    <string name="cards_for_today_text">Cards for today</string>
+    <string name="card_expired_text">Expired!</string>
+    <string name="card_time_left_text">Left: %s</string>
 </resources>

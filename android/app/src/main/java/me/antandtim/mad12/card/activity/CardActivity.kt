@@ -1,10 +1,13 @@
 package me.antandtim.mad12.card.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_card.*
 import me.antandtim.mad12.R
 import me.antandtim.mad12.card.model.Card
+import me.antandtim.mad12.card.util.ExpirationBinder
+import me.antandtim.mad12.card.util.bindExpireDate
+import java.time.Instant
 
 class CardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,6 +16,11 @@ class CardActivity : AppCompatActivity() {
 
         cardName.text = intent.getStringExtra(Card.nameIntentName)
         cardDescription.text = intent.getStringExtra(Card.descriptionIntentName)
-        cardExpireDate.text = intent.getStringExtra(Card.expireDateIntentName)
+
+        object : ExpirationBinder {
+            override fun bind(expirationTime: String) {
+                timeLeft.text = expirationTime
+            }
+        }.bindExpireDate(Instant.ofEpochMilli(intent.getLongExtra(Card.expireDateIntentName, 0)))
     }
 }
