@@ -16,6 +16,9 @@ class CardActivity : AppCompatActivity() {
 
         cardName.text = intent.getStringExtra(Card.nameIntentName)
         cardDescription.text = intent.getStringExtra(Card.descriptionIntentName)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
 
         object : ExpirationBinder {
             override fun bind(expirationTime: String) {
