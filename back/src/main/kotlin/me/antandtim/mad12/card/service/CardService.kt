@@ -4,6 +4,7 @@ import me.antandtim.mad12.card.exception.CardExpiredException
 import me.antandtim.mad12.card.exception.NoSuchCardException
 import me.antandtim.mad12.card.mapper.CardMapper
 import me.antandtim.mad12.card.model.CardDto
+import me.antandtim.mad12.card.model.CardFilter
 import me.antandtim.mad12.card.repository.CardRepository
 import org.springframework.stereotype.Service
 
@@ -12,7 +13,13 @@ class CardService(private val repository: CardRepository, private val mapper: Ca
     
     fun create(cardDto: CardDto) = mapper.map(repository.save(mapper.map(cardDto)))
     
-    fun get() = repository.findAll().mapNotNull(mapper::map)
+    fun get(cardFilter: CardFilter): List<CardDto> {
+        if (cardFilter.completed != null) {
+            return repository.findByCompleted(cardFilter.completed).map(mapper::map)
+        }
+        
+        return repository.findAll().mapNotNull(mapper::map)
+    }
     
     fun get(id: Long) = mapper.map(
         repository
