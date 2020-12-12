@@ -4,4 +4,8 @@
     <string name="cards_for_today_text">Cards for today</string>
     <string name="card_expired_text">Expired!</string>
     <string name="card_time_left_text">Left: %s</string>
+    <string name="create">Create</string>
+    <string name="card_description">Card Description</string>
+    <string name="card_name">Card Name</string>
+    <string name="completed">Completed!</string>
 </resources>

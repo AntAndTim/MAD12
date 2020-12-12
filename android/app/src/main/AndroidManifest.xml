@@ -21,6 +21,9 @@
         <activity
             android:name=".card.activity.CardActivity"
             android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".card.activity.CreateCardActivity"
+            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>

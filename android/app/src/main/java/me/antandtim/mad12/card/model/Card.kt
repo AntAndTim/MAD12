@@ -5,12 +5,12 @@ import com.google.gson.annotations.SerializedName
 import java.time.Instant
 
 data class Card(
-    val id: Long,
+    val id: Long? = null,
     val name: String,
     val description: String,
     @SerializedName("expireTime") // Sorry, I forgot the field name while writing this code
-    val expireDate: Instant,
-    val completed: Boolean
+    val expireDate: Instant? = null,
+    val completed: Boolean? = null
 ) {
     companion object {
         val DIFF_CALLBACK: DiffUtil.ItemCallback<Card> =

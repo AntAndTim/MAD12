@@ -22,8 +22,11 @@ class CardActivity : AppCompatActivity() {
         cardName.text = intent.getStringExtra(Card.nameIntentName)
         cardDescription.text = intent.getStringExtra(Card.descriptionIntentName)
         setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.apply {
+            title = "Card"
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowHomeEnabled(true)
+        }
 
         if (intent.getBooleanExtra(Card.completedIntentName, true)) {
             onComplete()
@@ -53,7 +56,7 @@ class CardActivity : AppCompatActivity() {
         if (this::countDownTimer.isInitialized) {
             countDownTimer.cancel()
         }
-        timeLeft.text = "Completed!"
+        timeLeft.text = getString(R.string.completed)
         doneButton.isEnabled = false
     }
 }

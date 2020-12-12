@@ -14,6 +14,7 @@ import me.antandtim.mad12.card.activity.CardActivity
 import me.antandtim.mad12.card.model.Card
 import me.antandtim.mad12.card.util.ExpirationBinder
 import me.antandtim.mad12.card.util.bindExpireDate
+import java.time.Instant
 
 class CardAdapter(
     private val mainActivity: MainActivity
@@ -37,12 +38,12 @@ class CardViewHolder(itemView: View, private val mainActivity: MainActivity) :
     fun bind(card: Card) {
         itemView.cardName.text = card.name
         itemView.cardDescription.text = card.description
-        if (!card.completed) {
+        if (card.completed != true) {
             bindExpireDate(card, mainActivity)
         } else {
             itemView.timeLeft.visibility = View.GONE
         }
-        itemView.completed.isChecked = card.completed
+        itemView.completed.isChecked = card.completed ?: false
         itemView.completed.isEnabled = false
 
         itemView.setOnClickListener {
@@ -51,7 +52,7 @@ class CardViewHolder(itemView: View, private val mainActivity: MainActivity) :
                     .putExtra(Card.idIntentName, card.id)
                     .putExtra(Card.nameIntentName, card.name)
                     .putExtra(Card.descriptionIntentName, card.description)
-                    .putExtra(Card.expireDateIntentName, card.expireDate.toEpochMilli())
+                    .putExtra(Card.expireDateIntentName, card.expireDate?.toEpochMilli())
                     .putExtra(Card.completedIntentName, card.completed)
             )
         }
@@ -67,5 +68,5 @@ class CardViewHolder(itemView: View, private val mainActivity: MainActivity) :
                 expirationTime.substring(0, expirationTime.length - 3)
             )
         }
-    }.bindExpireDate(card.expireDate, interval = 60000).start()
+    }.bindExpireDate(card.expireDate ?: Instant.now(), interval = 60000).start()
 }
