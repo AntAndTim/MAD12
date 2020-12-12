@@ -3,13 +3,15 @@ package me.antandtim.mad12.card.network
 import me.antandtim.mad12.card.model.Card
 import me.antandtim.mad12.common.network.BaseClient
 import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface CardApiClient {
 
     @GET("/card")
     fun get(@Query("completed") completed: Boolean? = null): Call<List<Card>>
+
+    @PUT("/card/complete/{id}")
+    fun complete(@Path("id") id: Long): Call<Card>
 }
 
 val CARD_API_CLIENT: CardApiClient = BaseClient.BASE_CLIENT.create(CardApiClient::class.java)

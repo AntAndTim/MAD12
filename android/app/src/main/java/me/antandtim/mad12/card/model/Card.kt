@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName
 import java.time.Instant
 
 data class Card(
+    val id: Long,
     val name: String,
     val description: String,
     @SerializedName("expireTime") // Sorry, I forgot the field name while writing this code
@@ -23,6 +24,7 @@ data class Card(
                 }
             }
 
+        const val idIntentName = "ID"
         const val nameIntentName = "NAME"
         const val descriptionIntentName = "DESCRIPTION"
         const val expireDateIntentName = "EXPIRE_DATE"

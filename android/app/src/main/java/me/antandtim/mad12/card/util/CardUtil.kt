@@ -18,8 +18,8 @@ fun ExpirationBinder.bindExpireDate(
     expireDate: Instant,
     finishedText: String = "Expired!",
     interval: Long = 1000
-) {
-    object : CountDownTimer(
+): CountDownTimer {
+    return object : CountDownTimer(
         Instant.now().until(expireDate, ChronoUnit.MILLIS),
         interval
     ) {
@@ -30,7 +30,7 @@ fun ExpirationBinder.bindExpireDate(
         override fun onTick(millisUntilFinished: Long) {
             this@bindExpireDate.bind(expireDate.getTimeLeft())
         }
-    }.start()
+    }
 }
 
 /**

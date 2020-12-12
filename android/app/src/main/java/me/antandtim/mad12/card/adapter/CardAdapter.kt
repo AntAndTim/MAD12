@@ -37,13 +37,18 @@ class CardViewHolder(itemView: View, private val mainActivity: MainActivity) :
     fun bind(card: Card) {
         itemView.cardName.text = card.name
         itemView.cardDescription.text = card.description
-        bindExpireDate(card, mainActivity)
+        if (!card.completed) {
+            bindExpireDate(card, mainActivity)
+        } else {
+            itemView.timeLeft.visibility = View.GONE
+        }
         itemView.completed.isChecked = card.completed
         itemView.completed.isEnabled = false
 
         itemView.setOnClickListener {
             mainActivity.startActivity(
                 Intent(mainActivity, CardActivity::class.java)
+                    .putExtra(Card.idIntentName, card.id)
                     .putExtra(Card.nameIntentName, card.name)
                     .putExtra(Card.descriptionIntentName, card.description)
                     .putExtra(Card.expireDateIntentName, card.expireDate.toEpochMilli())
@@ -62,5 +67,5 @@ class CardViewHolder(itemView: View, private val mainActivity: MainActivity) :
                 expirationTime.substring(0, expirationTime.length - 3)
             )
         }
-    }.bindExpireDate(card.expireDate, interval = 60000)
+    }.bindExpireDate(card.expireDate, interval = 60000).start()
 }
