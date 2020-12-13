@@ -14,6 +14,5 @@ class SharedPrefsModule {
     fun provideSharedPrefs(context:Context) = SharedPreferencesWrapper(context, false)
 
     @Provides
-    @Named("secure")
     fun provideSecureSharedPrefs(context:Context) = SharedPreferencesWrapper(context, true)
 }

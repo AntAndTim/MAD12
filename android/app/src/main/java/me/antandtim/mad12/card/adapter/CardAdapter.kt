@@ -44,7 +44,7 @@ class CardViewHolder(itemView: View, private val mainActivity: MainActivity) :
         }
 
         if (card.completed != true) {
-            bindExpireDate(card, mainActivity)
+            bindExpireDate(card)
         } else {
             itemView.timeLeft.visibility = View.GONE
         }
@@ -61,10 +61,7 @@ class CardViewHolder(itemView: View, private val mainActivity: MainActivity) :
         }
     }
 
-    private fun bindExpireDate(
-        card: Card,
-        mainActivity: MainActivity
-    ) = object : ExpirationBinder {
+    private fun bindExpireDate(card: Card) = object : ExpirationBinder {
         override fun bind(expirationTime: String) {
             itemView.timeLeft.text = expirationTime.split(":").let { "${it[0]}h ${it[1]}m" }
         }

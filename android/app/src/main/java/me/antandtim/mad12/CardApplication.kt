@@ -3,6 +3,7 @@ package me.antandtim.mad12
 import android.app.Application
 import me.antandtim.mad12.di.ApplicationComponent
 import me.antandtim.mad12.di.DaggerApplicationComponent
+import me.antandtim.mad12.di.SharedPrefsModule
 
 
 class CardApplication : Application() {
@@ -13,7 +14,8 @@ class CardApplication : Application() {
         super.onCreate()
         APPLICATION = this
 
-        appComponent = DaggerApplicationComponent.builder().build()
+        appComponent =
+            DaggerApplicationComponent.builder().sharedPrefsModule(SharedPrefsModule()).build()
     }
 
     companion object {
