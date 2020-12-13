@@ -4,7 +4,7 @@ import org.hibernate.annotations.GenericGenerator
 import javax.persistence.*
 
 @Entity
-@Table(name = "APP_USER")
+@Table(name = "REAL_WISH_USER")
 class User {
     
     @Id
