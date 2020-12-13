@@ -5,15 +5,22 @@ import android.text.Editable
 import android.text.TextWatcher
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_create_card.*
+import me.antandtim.mad12.CardApplication
 import me.antandtim.mad12.R
 import me.antandtim.mad12.card.model.Card
-import me.antandtim.mad12.card.network.CARD_API_CLIENT
+import me.antandtim.mad12.card.network.CardApiClient
 import me.antandtim.mad12.card.network.CardCreateCallback
+import javax.inject.Inject
 
 class CreateCardActivity : AppCompatActivity() {
+
+    @Inject
+    lateinit var cardApiClient: CardApiClient
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_card)
+        (application as CardApplication).appComponent.injectCreateCardActivity(this)
 
         setSupportActionBar(toolbar)
         supportActionBar?.apply {
@@ -24,7 +31,7 @@ class CreateCardActivity : AppCompatActivity() {
 
         createCardButton.setOnClickListener {
             it.isEnabled = false
-            CARD_API_CLIENT.create(
+            cardApiClient.create(
                 Card(
                     name = createCardName.text.toString(),
                     description = createCardDescription.text.toString()
