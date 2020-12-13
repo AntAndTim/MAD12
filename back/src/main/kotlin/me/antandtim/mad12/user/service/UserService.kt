@@ -33,6 +33,9 @@ class UserService(
         )
     }
     
-    fun get(login: String) =
+    fun getInfo(login: String) =
         userMapper.map(userRepository.findByLogin(login) ?: throw NoSuchUserException())
+    
+    fun get(login: String) =
+        userRepository.findByLogin(login) ?: throw NoSuchUserException()
 }

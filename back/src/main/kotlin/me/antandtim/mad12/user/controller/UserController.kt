@@ -14,6 +14,6 @@ class UserController(val userService: UserService) {
     
     @GetMapping("/info")
     fun info(authentication: Authentication): UserDto {
-        return userService.get(authentication.name)
+        return userService.getInfo(authentication.name)
     }
 }

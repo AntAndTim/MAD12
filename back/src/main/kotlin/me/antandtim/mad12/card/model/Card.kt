@@ -1,5 +1,6 @@
 package me.antandtim.mad12.card.model
 
+import me.antandtim.mad12.user.model.User
 import org.hibernate.annotations.GenericGenerator
 import java.time.Instant
 import java.time.temporal.ChronoUnit
@@ -33,6 +34,9 @@ class Card {
     
     @Column
     var completed: Boolean? = null
+    
+    @ManyToOne
+    var user: User? = null
     
     fun expired() = Instant.now().isAfter(expireTime)
 }
