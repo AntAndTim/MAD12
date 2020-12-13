@@ -1,5 +1,6 @@
 package me.antandtim.mad12.card.model
 
+import org.hibernate.annotations.GenericGenerator
 import java.time.Instant
 import java.time.temporal.ChronoUnit
 import javax.persistence.*
@@ -9,7 +10,11 @@ import javax.persistence.*
 class Card {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "cardSequenceGenerator")
+    @GenericGenerator(
+        name = "cardSequenceGenerator",
+        strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator"
+    )
     var id: Long? = null
     
     @Column
