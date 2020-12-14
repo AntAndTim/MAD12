@@ -35,16 +35,23 @@ class RegistrationFragment : Fragment() {
         val backButton = view.backButton
         val login = view.login
         val password = view.password
+        val name = view.name
+        val lastName = view.last_name
 
 
-        registerButton.isEnabled = login.text!!.isNotBlank() && password.text!!.isNotBlank()
+        registerButton.isEnabled = login.text!!.isNotBlank()
+                && password.text!!.isNotBlank()
+                && name.text!!.isNotBlank()
+                && lastName.text!!.isNotBlank()
 
         login.addTextChangedListener(RegistrationFragmentHelper.getTextWatcher(this))
         password.addTextChangedListener(RegistrationFragmentHelper.getTextWatcher(this))
+        name.addTextChangedListener(RegistrationFragmentHelper.getTextWatcher(this))
+        lastName.addTextChangedListener(RegistrationFragmentHelper.getTextWatcher(this))
 
         registerButton.setOnClickListener {
                     userApiClient
-                            .register(User(login.text.toString(), password.text.toString()))
+                            .register(User(login.text.toString(), password.text.toString(), name.text.toString(), lastName.text.toString()))
                             .enqueue(RegisterCallback(this.context, password.text.toString()))
                 }
 
