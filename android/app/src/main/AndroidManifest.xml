@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Mad12">
         <activity
-            android:name=".authentication.activity.AuthenticationActivity"
+            android:name=".authentication.ui.AuthenticationActivity"
             android:label="@string/title_activity_authorization" />
         <activity android:name=".NavigationDrawerActivity">
             <intent-filter>
