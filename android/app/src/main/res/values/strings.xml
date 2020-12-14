@@ -28,6 +28,7 @@
     <string name="create_account_button">Create account</string>
     <string name="time_left">Time left</string>
     <string name="numbers_time_left">23:59</string>
+    <string name="log_out">Log Out</string>
 
 
 </resources>

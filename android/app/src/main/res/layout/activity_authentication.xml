@@ -56,8 +56,8 @@
             android:id="@+id/loginButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/blue_main"
             android:fontFamily="sans-serif-medium"
+            style="@style/ColoredButton"
             android:text="@string/log_in_button" />
 
         <TextView

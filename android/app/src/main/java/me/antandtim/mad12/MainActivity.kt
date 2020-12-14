@@ -56,6 +56,15 @@ class MainActivity : AppCompatActivity() {
         fab.setOnClickListener {
             startActivity(Intent(this, CreateCardActivity::class.java))
         }
+
+        logout_btn.setOnClickListener {
+            preferencesWrapper.set("LOGIN", "")
+            preferencesWrapper.set("PASSWORD", "")
+            startActivityForResult(
+                    Intent(this, AuthenticationActivity::class.java),
+                    RequestCode.AUTHENTICATION.code
+            )
+        }
     }
 
     override fun onResume() {
