@@ -12,7 +12,7 @@
         style="@style/Widget.MaterialComponents.Toolbar.Primary"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/blue_main"
+        android:background="@color/green_main"
         app:title="@string/real_wishes" />
 
     <LinearLayout
@@ -32,7 +32,6 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/login"
-                android:background="@drawable/backwithborder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:singleLine="true" />
@@ -46,7 +45,6 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/password"
-                android:background="@drawable/backwithborder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:singleLine="true" />
@@ -70,7 +68,7 @@
 
         <Button
             android:id="@+id/registerButton"
-            android:backgroundTint="@color/blue_main"
+            android:backgroundTint="@color/green_main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/create_account_button" />

@@ -51,9 +51,9 @@ class AuthenticationActivity : AppCompatActivity() {
 
         registerButton.setOnClickListener {
             if(registerButton.text == getString(R.string.create_account_button)){
-                loginText.hint = getString(R.string.create_account_button)
+                loginText.hint = getString(R.string.login_text)
                 loginButton.text = getString(R.string.create_account_button)
-                registerButton.text = getString(R.string.log_in_button)
+                registerButton.text = getString(R.string.back)
                 textView3.visibility = View.GONE
 
                 loginButton.setOnClickListener {

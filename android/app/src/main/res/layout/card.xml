@@ -3,6 +3,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/backwithborder"
     android:layout_marginHorizontal="@dimen/card_layout_margin_horizontal"
     android:layout_marginVertical="@dimen/card_recycler_margin_vertical"
     android:foreground="?android:attr/selectableItemBackground">
@@ -32,7 +33,7 @@
                 style="@style/TextAppearance.MaterialComponents.Body1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/grey" />
+                android:textColor="@color/black" />
 
         </LinearLayout>
 
@@ -62,7 +63,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/time_left"
                     android:textAlignment="center"
-                    android:textColor="@color/grey" />
+                    android:textColor="@color/black" />
 
                 <TextView
                     android:id="@+id/timeLeft"
