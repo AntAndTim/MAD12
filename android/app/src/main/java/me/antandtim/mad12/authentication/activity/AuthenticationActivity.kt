@@ -15,6 +15,9 @@ import me.antandtim.mad12.sharedpreferences.SharedPreferencesWrapper
 import javax.inject.Inject
 
 class AuthenticationActivity : AppCompatActivity() {
+    override fun onBackPressed() {
+        // do nothing
+    }
 
     @Inject
     lateinit var securedWrapper: SharedPreferencesWrapper
