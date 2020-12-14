@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainFragment">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,8 +25,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:layout_weight="0.8"
-                android:text="@string/cards_for_today_text"
-                android:textColor="@color/green" />
+                android:text="@string/active_cards_text"
+                android:textColor="@color/green_main" />
 
             <Button
                 android:id="@+id/add"
@@ -37,7 +36,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:textAlignment="center"
-                android:textColor="@color/green"
+                android:textColor="@color/green_main"
 
                 app:icon="@drawable/ic_baseline_add_24" />
         </LinearLayout>
@@ -52,12 +51,12 @@
                 android:id="@+id/cardRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginVertical="8dp"
+                android:layout_marginVertical="@dimen/card_recycler_margin_vertical"
                 tools:listitem="@layout/card" />
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
     </LinearLayout>
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

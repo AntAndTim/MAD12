@@ -59,9 +59,17 @@ class MainFragment : Fragment() {
         view.add.setOnClickListener {
             startActivity(Intent(activity, CreateCardActivity::class.java))
         }
+
+//        logout_btn.setOnClickListener {
+//            preferencesWrapper.set("LOGIN", "")
+//            preferencesWrapper.set("PASSWORD", "")
+//            startActivityForResult(
+//                    Intent(this, AuthenticationActivity::class.java),
+//                    RequestCode.AUTHENTICATION.code
+//            )
+//        }
         return view
     }
-
 
     override fun onResume() {
         super.onResume()

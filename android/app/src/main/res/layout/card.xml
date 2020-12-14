@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="16dp"
-    android:layout_marginVertical="4dp"
-    android:foreground="?android:attr/selectableItemBackground">
+    android:background="@drawable/backwithborder"
+    android:layout_marginHorizontal="@dimen/card_layout_margin_horizontal"
+    android:layout_marginVertical="@dimen/card_recycler_margin_vertical"
+    android:foreground="?android:attr/selectableItemBackground"
+    card_view:cardCornerRadius="4dp"
+    card_view:cardElevation="0dp" >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/backwithborder"
         android:orientation="horizontal"
-        android:padding="16dp">
+        android:padding="@dimen/card_layout_padding">
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="@dimen/card_layout_width"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical">
@@ -23,18 +28,20 @@
                 android:id="@+id/cardName"
                 style="@style/TextAppearance.MaterialComponents.Headline4"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/cardDescription"
                 style="@style/TextAppearance.MaterialComponents.Body1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textColor="@color/black" />
 
         </LinearLayout>
 
         <Space
-            android:layout_width="8dp"
+            android:layout_width="@dimen/card_space_width"
             android:layout_height="wrap_content" />
 
         <FrameLayout
@@ -55,16 +62,19 @@
 
                 <TextView
                     style="@style/TextAppearance.MaterialComponents.Caption"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Time left" />
+                    android:text="@string/time_left"
+                    android:textAlignment="center"
+                    android:textColor="@color/black" />
 
                 <TextView
                     android:id="@+id/timeLeft"
                     style="@style/TextAppearance.MaterialComponents.Headline5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="24:44" />
+                    android:text="@string/numbers_time_left"
+                    android:textColor="@color/black"/>
 
             </LinearLayout>
 
