@@ -10,8 +10,8 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class RegisterCallback(
-    private val context: Context,
-    private val password: String
+        private val context: Context,
+        private val password: String
 ) : Callback<User> {
 
     override fun onFailure(call: Call<User>, t: Throwable) {
@@ -19,8 +19,8 @@ class RegisterCallback(
     }
 
     override fun onResponse(
-        call: Call<User>,
-        response: Response<User>
+            call: Call<User>,
+            response: Response<User>
     ) {
         (context as AuthenticationActivity).apply {
             securedWrapper.set("LOGIN", response.body()!!.login)

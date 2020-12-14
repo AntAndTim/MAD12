@@ -2,6 +2,7 @@ package me.antandtim.mad12.authentication.activity
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_authentication.*
 import me.antandtim.mad12.CardApplication
@@ -49,15 +50,34 @@ class AuthenticationActivity : AppCompatActivity() {
         }
 
         registerButton.setOnClickListener {
-            loginText.hint = getString(R.string.create_account_button)
-            loginButton.text = getString(R.string.create_account_button)
-            registerBar.visibility = View.GONE
+            if(registerButton.text == getString(R.string.create_account_button)){
+                loginText.hint = getString(R.string.create_account_button)
+                loginButton.text = getString(R.string.create_account_button)
+                registerButton.text = getString(R.string.log_in_button)
+                textView3.visibility = View.GONE
 
-            loginButton.setOnClickListener {
-                userApiClient
-                    .register(User(login.text.toString(), password.text.toString()))
-                    .enqueue(RegisterCallback(this, password.text.toString()))
+                loginButton.setOnClickListener {
+                    userApiClient
+                            .register(User(login.text.toString(), password.text.toString()))
+                            .enqueue(RegisterCallback(this, password.text.toString()))
+                }
+            } else {
+                loginText.hint = getString(R.string.login_text)
+                loginButton.text = getString(R.string.log_in_button)
+                registerButton.text = getString(R.string.create_account_button)
+                textView3.visibility = View.VISIBLE
+
+                loginButton.setOnClickListener {
+                    cardApiClient.get().enqueue(
+                            CardCheckAuthCallback(
+                                    this,
+                                    login.text.toString(),
+                                    password.text.toString()
+                            )
+                    )
+                }
             }
+
         }
     }
 }

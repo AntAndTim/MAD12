@@ -10,9 +10,9 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class CardCheckAuthCallback(
-    private val context: Context,
-    private val login: String,
-    private val password: String
+        private val context: Context,
+        private val login: String,
+        private val password: String
 ) : Callback<List<Card>> {
 
     override fun onFailure(call: Call<List<Card>>, t: Throwable) {
@@ -20,8 +20,8 @@ class CardCheckAuthCallback(
     }
 
     override fun onResponse(
-        call: Call<List<Card>>,
-        response: Response<List<Card>>
+            call: Call<List<Card>>,
+            response: Response<List<Card>>
     ) {
         (context as AuthenticationActivity).apply {
             securedWrapper.set("LOGIN", login)
