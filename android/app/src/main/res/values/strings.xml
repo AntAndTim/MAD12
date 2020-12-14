@@ -24,4 +24,7 @@
     <string name="shared_preference_name">me.antandtim.mad12.DATA</string>
     <string name="login_preferences_key">LOGIN</string>
     <string name="password_preferences_key">PASSWORD</string>
+    <string name="nav_profile">Profile</string>
+    <string name="nav_main">Main</string>
+
 </resources>
