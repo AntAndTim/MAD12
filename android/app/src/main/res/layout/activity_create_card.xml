@@ -9,14 +9,15 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
+        android:background="@color/blue_main"
         style="@style/Widget.MaterialComponents.Toolbar.Primary"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_height="@dimen/layout_height"
+        android:layout_margin="@dimen/layout_margin"
         android:layout_weight="1"
         android:orientation="vertical">
 
@@ -28,6 +29,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/createCardName"
+                android:background="@drawable/backwithborder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:singleLine="true" />
@@ -35,12 +37,12 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="16dp" />
+            android:layout_height="@dimen/activity_card_space_height" />
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/layout_height"
             android:layout_weight="1"
             android:hint="@string/card_description"
             app:counterEnabled="true"
@@ -48,6 +50,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/createCardDescription"
+                android:background="@drawable/backwithborder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="top"
@@ -62,7 +65,7 @@
         android:id="@+id/createCardButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_margin="@dimen/create_button_margin"
         android:text="@string/create"
         android:enabled="false"/>
 
