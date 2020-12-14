@@ -2,7 +2,7 @@ package me.antandtim.mad12.authentication.network
 
 import android.content.Context
 import android.widget.Toast
-import me.antandtim.mad12.authentication.ui.AuthenticationActivity
+import me.antandtim.mad12.authentication.activity.AuthenticationActivity
 import me.antandtim.mad12.card.model.Card
 import me.antandtim.mad12.common.activity.interaction.RequestCode
 import retrofit2.Call
@@ -10,7 +10,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class CardCheckAuthCallback(
-        private val context: Context?,
+        private val context: Context,
         private val login: String,
         private val password: String
 ) : Callback<List<Card>> {

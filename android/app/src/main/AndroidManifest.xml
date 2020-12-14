@@ -13,9 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Mad12">
         <activity
-            android:name=".auth.ui.login.AuthorizationActivity"
+            android:name=".authentication.activity.AuthenticationActivity"
             android:label="@string/title_activity_authorization" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".NavigationDrawerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,11 +24,10 @@
         </activity>
         <activity
             android:name=".card.activity.CardActivity"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".NavigationDrawerActivity" />
         <activity
             android:name=".card.activity.CreateCardActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity android:name=".authentication.ui.AuthenticationActivity" />
+            android:parentActivityName=".NavigationDrawerActivity" />
     </application>
 
 </manifest>
