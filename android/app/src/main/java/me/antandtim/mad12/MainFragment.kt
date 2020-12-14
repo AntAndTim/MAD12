@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.fragment_name.*
 import kotlinx.android.synthetic.main.fragment_name.view.*
-import me.antandtim.mad12.authentication.activity.AuthenticationActivity
+import me.antandtim.mad12.authentication.ui.AuthenticationActivity
 import me.antandtim.mad12.card.activity.CreateCardActivity
 import me.antandtim.mad12.card.adapter.CardAdapter
 import me.antandtim.mad12.card.network.CardApiClient
