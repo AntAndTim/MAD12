@@ -32,6 +32,10 @@
     <string name="log_out">Log Out</string>
     <string name="nav_profile">Profile</string>
     <string name="nav_main">Main</string>
+    <string name="channel_name">Notification Channel</string>
+    <string name="channel_description">Notify about timer</string>
+    <string name="notification_title">Hi there!</string>
+    <string name="notification_description">Do not forget that all your wishes are real! Let\'s check what is going on!</string>
 
 
 </resources>
