@@ -3,7 +3,7 @@ package me.antandtim.mad12.di
 
 import dagger.Component
 import me.antandtim.mad12.MainFragment
-import me.antandtim.mad12.authentication.activity.AuthenticationActivity
+import me.antandtim.mad12.authentication.ui.AuthenticationActivity
 import me.antandtim.mad12.authentication.di.AuthenticationNetworkModule
 import me.antandtim.mad12.authentication.ui.LoginFragment
 import me.antandtim.mad12.authentication.ui.RegistrationFragment
@@ -33,5 +33,5 @@ interface ApplicationComponent {
 
     fun injectLogin(fragment: LoginFragment)
     fun injectRegistration(fragment: RegistrationFragment)
-    fun injectMain(activity: MainActivity)
+    fun injectMain(activity: MainFragment)
 }
