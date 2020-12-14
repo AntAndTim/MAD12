@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="layout_height">0dp</dimen>
+    <dimen name="layout_margin">16dp</dimen>
+    <dimen name="activity_card_layout_margin_vertical">8dp</dimen>
+    <dimen name="activity_card_text_margin_top">8dp</dimen>
+    <dimen name="close_button_height">60dp</dimen>
+    <dimen name="close_button_margin">16dp</dimen>
+    <dimen name="activity_card_space_height">16dp</dimen>
+    <dimen name="create_button_margin">16dp</dimen>
+    <dimen name="main_title_margin">16dp</dimen>
+    <dimen name="card_recycler_margin_vertical">8dp</dimen>
+    <dimen name="add_button_margin">16dp</dimen>
+    <dimen name="add_button_border_width">0dp</dimen>
+    <dimen name="card_layout_margin_horizontal">16dp</dimen>
+    <dimen name="card_layout_margin_vertical">4dp</dimen>
+    <dimen name="card_layout_padding">16dp</dimen>
+    <dimen name="card_layout_width">0dp</dimen>
+    <dimen name="card_space_width">8dp</dimen>
+
+
+
+
+
+</resources>
