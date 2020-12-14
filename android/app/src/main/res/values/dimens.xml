@@ -17,6 +17,10 @@
     <dimen name="card_layout_padding">16dp</dimen>
     <dimen name="card_layout_width">0dp</dimen>
     <dimen name="card_space_width">8dp</dimen>
+    <dimen name="card_text_size">14sp</dimen>
+    <dimen name="card_field_size">24sp</dimen>
+    <dimen name="card_time_left_size">30sp</dimen>
+    <dimen name="active_name_width">200dp</dimen>
 
 
 
