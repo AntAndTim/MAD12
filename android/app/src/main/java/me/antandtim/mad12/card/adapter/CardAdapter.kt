@@ -8,7 +8,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.card.view.*
-import me.antandtim.mad12.MainActivity
+import me.antandtim.mad12.MainFragment
+import me.antandtim.mad12.NavigationDrawerActivity
 import me.antandtim.mad12.R
 import me.antandtim.mad12.card.activity.CardActivity
 import me.antandtim.mad12.card.model.Card
@@ -17,13 +18,13 @@ import me.antandtim.mad12.card.util.bindExpireDate
 import java.time.Instant
 
 class CardAdapter(
-    private val mainActivity: MainActivity
+    private val mainFragment: MainFragment
 ) : ListAdapter<Card, CardViewHolder>(Card.DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
         return CardViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.card, parent, false),
-            mainActivity
+                mainFragment
         )
     }
 
@@ -32,7 +33,7 @@ class CardAdapter(
     }
 }
 
-class CardViewHolder(itemView: View, private val mainActivity: MainActivity) :
+class CardViewHolder(itemView: View, private val mainFragment: MainFragment) :
     RecyclerView.ViewHolder(itemView) {
 
     fun bind(card: Card) {
@@ -50,8 +51,8 @@ class CardViewHolder(itemView: View, private val mainActivity: MainActivity) :
         }
 
         itemView.setOnClickListener {
-            mainActivity.startActivity(
-                Intent(mainActivity, CardActivity::class.java)
+            mainFragment.startActivity(
+                Intent(mainFragment.activity, CardActivity::class.java)
                     .putExtra(Card.idIntentName, card.id)
                     .putExtra(Card.nameIntentName, card.name)
                     .putExtra(Card.descriptionIntentName, card.description)

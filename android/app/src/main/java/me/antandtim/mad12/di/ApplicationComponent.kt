@@ -2,7 +2,7 @@ package me.antandtim.mad12.di
 
 
 import dagger.Component
-import me.antandtim.mad12.MainActivity
+import me.antandtim.mad12.MainFragment
 import me.antandtim.mad12.authentication.activity.AuthenticationActivity
 import me.antandtim.mad12.authentication.di.AuthenticationNetworkModule
 import me.antandtim.mad12.card.activity.CardActivity
@@ -29,5 +29,5 @@ interface ApplicationComponent {
 
     fun injectAuthentication(activity: AuthenticationActivity)
 
-    fun injectMain(activity: MainActivity)
+    fun injectMain(fragment: MainFragment)
 }

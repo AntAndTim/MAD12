@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,37 +12,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            >
+            android:weightSum="1">
 
             <TextView
                 android:id="@+id/title"
                 style="@style/TextAppearance.MaterialComponents.Headline4"
-                android:layout_width="@dimen/active_name_width"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="@dimen/layout_margin"
-                android:layout_marginTop="@dimen/layout_margin"
-                android:layout_marginEnd="@dimen/main_title_margin"
-                android:layout_marginBottom="@dimen/main_title_margin"
+                android:layout_margin="16dp"
+                android:layout_weight="0.8"
                 android:text="@string/active_cards_text"
                 android:textColor="@color/green_main" />
 
             <Button
-                android:id="@+id/logout_btn"
+                android:id="@+id/add"
+                style="@style/Widget.App.Button.OutlinedButton.IconOnly"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="@dimen/layout_margin"
-                android:layout_marginEnd="@dimen/layout_margin"
-                android:text="@string/log_out" />
-        </RelativeLayout>
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:textAlignment="center"
+                android:textColor="@color/green_main"
+
+                app:icon="@drawable/ic_baseline_add_24" />
+        </LinearLayout>
+
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/cardContainerSwipe"
@@ -61,16 +58,5 @@
 
     </LinearLayout>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/add_button_margin"
-        android:backgroundTint="@color/green_main"
-        android:src="@drawable/ic_baseline_add_24"
-        app:borderWidth="@dimen/add_button_border_width"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:tint="@color/white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
