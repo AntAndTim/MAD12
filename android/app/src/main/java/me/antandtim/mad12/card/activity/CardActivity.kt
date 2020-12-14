@@ -1,5 +1,6 @@
 package me.antandtim.mad12.card.activity
 
+
 import android.os.Bundle
 import android.os.CountDownTimer
 import androidx.appcompat.app.AppCompatActivity
@@ -25,6 +26,7 @@ class CardActivity : AppCompatActivity() {
         setContentView(R.layout.activity_card)
         (application as CardApplication).appComponent.injectCardActivity(this)
 
+
         cardName.text = intent.getStringExtra(Card.nameIntentName)
         cardDescription.text = intent.getStringExtra(Card.descriptionIntentName)
         setSupportActionBar(toolbar)
@@ -37,23 +39,25 @@ class CardActivity : AppCompatActivity() {
         if (intent.getBooleanExtra(Card.completedIntentName, true)) {
             onComplete()
         } else {
+
+
             countDownTimer = object : ExpirationBinder {
                 override fun bind(expirationTime: String) {
                     timeLeft.text = expirationTime
                 }
             }.bindExpireDate(
-                Instant.ofEpochMilli(
-                    intent.getLongExtra(
-                        Card.expireDateIntentName,
-                        0
+                    Instant.ofEpochMilli(
+                            intent.getLongExtra(
+                                    Card.expireDateIntentName,
+                                    0
+                            )
                     )
-                )
             ).start()
 
             doneButton.setOnClickListener {
                 cardApiClient
-                    .complete(intent.getLongExtra(Card.idIntentName, -1))
-                    .enqueue(CardCompleteCallback(this))
+                        .complete(intent.getLongExtra(Card.idIntentName, -1))
+                        .enqueue(CardCompleteCallback(this))
             }
         }
     }
@@ -65,4 +69,5 @@ class CardActivity : AppCompatActivity() {
         timeLeft.text = getString(R.string.completed)
         doneButton.isEnabled = false
     }
+
 }

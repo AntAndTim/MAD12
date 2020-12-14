@@ -18,6 +18,7 @@ import me.antandtim.mad12.card.network.CardApiClient
 import me.antandtim.mad12.card.network.CardGetRefreshCallback
 import me.antandtim.mad12.common.activity.interaction.RequestCode
 import me.antandtim.mad12.sharedpreferences.SharedPreferencesWrapper
+import java.util.*
 import javax.inject.Inject
 
 
@@ -29,10 +30,13 @@ class MainFragment : Fragment() {
     lateinit var preferencesWrapper: SharedPreferencesWrapper
 
     lateinit var cardAdapter: CardAdapter
+    private val mNotificationTime = Calendar.getInstance().timeInMillis + 1000*5 //Set after 5 seconds from the current time.
+    private var mNotified = false
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        var view = inflater.inflate(R.layout.fragment_name, container, false)
+        val view = inflater.inflate(R.layout.fragment_name, container, false)
 
         (activity?.application as CardApplication).appComponent.injectMain(this)
 
@@ -43,6 +47,9 @@ class MainFragment : Fragment() {
             )
         }
 
+        if (!mNotified) {
+            NotificationUtils().setNotification(mNotificationTime, (activity as AppCompatActivity))
+        }
 
         view.cardContainerSwipe.isRefreshing = true
 
