@@ -19,13 +19,18 @@ class AuthenticationActivity : AppCompatActivity() {
         goToLogin()
     }
 
-    fun goToRegister(){
+    fun goToRegister() {
         val registerFragment = RegistrationFragment()
         supportFragmentManager.beginTransaction().replace(R.id.auth_body, registerFragment).commit()
     }
 
-    fun goToLogin(){
+    fun goToLogin() {
         val loginFragment = LoginFragment()
         supportFragmentManager.beginTransaction().replace(R.id.auth_body, loginFragment).commit()
+    }
+
+    @Override
+    override fun onBackPressed() {
+        //do nothing
     }
 }
