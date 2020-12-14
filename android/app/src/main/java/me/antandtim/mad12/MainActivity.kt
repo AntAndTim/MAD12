@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
-import me.antandtim.mad12.authentication.activity.AuthenticationActivity
+import me.antandtim.mad12.authentication.ui.AuthenticationActivity
 import me.antandtim.mad12.card.activity.CreateCardActivity
 import me.antandtim.mad12.card.adapter.CardAdapter
 import me.antandtim.mad12.card.network.CardApiClient
@@ -14,7 +14,6 @@ import me.antandtim.mad12.card.network.CardGetRefreshCallback
 import me.antandtim.mad12.common.activity.interaction.RequestCode
 import me.antandtim.mad12.sharedpreferences.SharedPreferencesWrapper
 import javax.inject.Inject
-import javax.inject.Named
 
 
 class MainActivity : AppCompatActivity() {

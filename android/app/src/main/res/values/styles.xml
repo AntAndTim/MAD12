@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="ColoredButton" parent="Widget.AppCompat.Button.Colored">
+    <style name="PrimaryButton" parent="Widget.AppCompat.Button.Colored">
         <item name="android:textColor">@color/btn_text_color</item>
+    </style>
+
+
+    <style name="DefaultButton" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:textColor">@color/btn_text_color</item>
+        <item name="android:background">@color/purple_200</item>
     </style>
 </resources>
