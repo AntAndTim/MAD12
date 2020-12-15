@@ -1,15 +1,17 @@
 package me.antandtim.mad12.card.adapter
 
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import io.reactivex.subjects.PublishSubject
+import io.reactivex.subjects.Subject
 import kotlinx.android.synthetic.main.card.view.*
 import me.antandtim.mad12.MainFragment
-import me.antandtim.mad12.NavigationDrawerActivity
 import me.antandtim.mad12.R
 import me.antandtim.mad12.card.activity.CardActivity
 import me.antandtim.mad12.card.model.Card
@@ -17,13 +19,14 @@ import me.antandtim.mad12.card.util.ExpirationBinder
 import me.antandtim.mad12.card.util.bindExpireDate
 import java.time.Instant
 
+
 class CardAdapter(
-    private val mainFragment: MainFragment
+        private val mainFragment: MainFragment
 ) : ListAdapter<Card, CardViewHolder>(Card.DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
         return CardViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.card, parent, false),
+                LayoutInflater.from(parent.context).inflate(R.layout.card, parent, false),
                 mainFragment
         )
     }
@@ -34,7 +37,9 @@ class CardAdapter(
 }
 
 class CardViewHolder(itemView: View, private val mainFragment: MainFragment) :
-    RecyclerView.ViewHolder(itemView) {
+        RecyclerView.ViewHolder(itemView) {
+
+    var mObservable: Subject<String> = PublishSubject.create<String>()
 
     fun bind(card: Card) {
         itemView.cardName.text = card.name
@@ -52,19 +57,25 @@ class CardViewHolder(itemView: View, private val mainFragment: MainFragment) :
 
         itemView.setOnClickListener {
             mainFragment.startActivity(
-                Intent(mainFragment.activity, CardActivity::class.java)
-                    .putExtra(Card.idIntentName, card.id)
-                    .putExtra(Card.nameIntentName, card.name)
-                    .putExtra(Card.descriptionIntentName, card.description)
-                    .putExtra(Card.expireDateIntentName, card.expireDate?.toEpochMilli())
-                    .putExtra(Card.completedIntentName, card.completed)
+                    Intent(mainFragment.activity, CardActivity::class.java)
+                            .putExtra(Card.idIntentName, card.id)
+                            .putExtra(Card.nameIntentName, card.name)
+                            .putExtra(Card.descriptionIntentName, card.description)
+                            .putExtra(Card.expireDateIntentName, card.expireDate?.toEpochMilli())
+                            .putExtra(Card.completedIntentName, card.completed)
             )
         }
     }
 
     private fun bindExpireDate(card: Card) = object : ExpirationBinder {
+        @SuppressLint("CheckResult")
         override fun bind(expirationTime: String) {
-            itemView.timeLeft.text = expirationTime.split(":").let { "${it[0]}h ${it[1]}m" }
+            mObservable.onNext(expirationTime)
+            mObservable.subscribe { string ->
+                itemView.timeLeft.text = string.split(":").let { "${it[0]}h ${it[1]}m ${it[2]}s" }
+            }
         }
-    }.bindExpireDate(card.expireDate ?: Instant.now(), interval = 60000).start()
+    }.bindExpireDate(card.expireDate ?: Instant.now(), interval = 1000).start()
+
+
 }

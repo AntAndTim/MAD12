@@ -21,8 +21,6 @@ class NotificationService : IntentService("NotificationService") {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
-            // Create the NotificationChannel, but only on API 26+ because
-            // the NotificationChannel class is new and not in the support library
 
             val context = this.applicationContext
             val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
@@ -42,15 +40,15 @@ class NotificationService : IntentService("NotificationService") {
 
     companion object {
 
-        const val CHANNEL_ID = "samples.notification.devdeeds.com.CHANNEL_ID"
-        const val CHANNEL_NAME = "Sample Notification"
+        const val CHANNEL_ID = "me.antandtim.mad12"
+        const val CHANNEL_NAME = "notifications"
     }
 
 
     override fun onCreate() {
         super.onCreate()
         if (Build.VERSION.SDK_INT >= 26) {
-            val CHANNEL_ID = "my_channel_01"
+            val CHANNEL_ID = getString(R.string.channel_name)
             val channel = NotificationChannel(CHANNEL_ID,
                     "Channel human readable title",
                     NotificationManager.IMPORTANCE_DEFAULT)
@@ -62,13 +60,11 @@ class NotificationService : IntentService("NotificationService") {
         }
 
 
-        // Do whatever you want to do here
     }
 
 
     override fun onHandleIntent(intent: Intent?) {
 
-        //Create Channel
         createChannel()
 
 
@@ -100,7 +96,6 @@ class NotificationService : IntentService("NotificationService") {
 
 
                 mNotification = Notification.Builder(this, CHANNEL_ID)
-                        // Set the intent that will fire when the user taps the notification
                         .setContentIntent(pendingIntent)
                         .setSmallIcon(R.drawable.ic_stat_name)
                         .setLargeIcon(BitmapFactory.decodeResource(res, R.mipmap.ic_launcher))
@@ -127,8 +122,6 @@ class NotificationService : IntentService("NotificationService") {
 
 
             val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-            Log.e("TAG","TAG")
-            // mNotificationId is a unique int for each notification that you must define
             notificationManager.notify(mNotificationId, mNotification)
         }
     }
