@@ -30,7 +30,7 @@ class MainFragment : Fragment() {
     lateinit var preferencesWrapper: SharedPreferencesWrapper
 
     lateinit var cardAdapter: CardAdapter
-    private val mNotificationTime = Calendar.getInstance().timeInMillis + 1000*5 //Set after 5 seconds from the current time.
+    private val mNotificationTime = Calendar.getInstance().timeInMillis + 1000*30
     private var mNotified = false
 
 
