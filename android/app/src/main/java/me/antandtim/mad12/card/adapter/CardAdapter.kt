@@ -71,8 +71,8 @@ class CardViewHolder(itemView: View, private val mainFragment: MainFragment) :
         @SuppressLint("CheckResult")
         override fun bind(expirationTime: String) {
             mObservable.onNext(expirationTime)
-            mObservable.subscribe { string ->
-                itemView.timeLeft.text = string.split(":").let { "${it[0]}h ${it[1]}m ${it[2]}s" }
+            mObservable.subscribe { string: String ->
+                itemView.timeLeft.text = string.split(":").let { "${it[0]}h ${it[1]}m" }
             }
         }
     }.bindExpireDate(card.expireDate ?: Instant.now(), interval = 1000).start()

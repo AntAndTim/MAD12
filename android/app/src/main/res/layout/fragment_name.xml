@@ -23,7 +23,7 @@
                 style="@style/TextAppearance.MaterialComponents.Headline4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
+                android:layout_margin="@dimen/activity_card_space_height"
                 android:layout_weight="0.8"
                 android:text="@string/active_cards_text"
                 android:textColor="@color/green_main" />
@@ -33,8 +33,8 @@
                 style="@style/Widget.App.Button.OutlinedButton.IconOnly"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
+                android:layout_marginTop="@dimen/add_btn_margin"
+                android:layout_marginEnd="@dimen/add_btn_margin"
                 android:textAlignment="center"
                 android:textColor="@color/green_main"
 
