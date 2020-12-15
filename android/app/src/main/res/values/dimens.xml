@@ -27,7 +27,7 @@
 
     <dimen name="profile_field_margin">30dp</dimen>
     <dimen name="add_btn_margin">10dp</dimen>
-    <dimen name="card_corner_radius">10dp</dimen>
+    <dimen name="card_corner_radius">5dp</dimen>
 
 
 

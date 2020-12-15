@@ -79,7 +79,7 @@
 
     <Button
         android:id="@+id/doneButton"
-        android:backgroundTint="@color/green_main"
+        style="@style/PrimaryButton"
         android:layout_width="match_parent"
         android:layout_height="@dimen/close_button_height"
         android:layout_marginHorizontal="@dimen/close_button_margin"
