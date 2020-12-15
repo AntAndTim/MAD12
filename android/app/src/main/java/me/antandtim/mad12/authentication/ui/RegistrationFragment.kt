@@ -1,10 +1,12 @@
 package me.antandtim.mad12.authentication.ui
 
+import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_registartion.view.*
 import me.antandtim.mad12.CardApplication
 import me.antandtim.mad12.R
@@ -50,10 +52,11 @@ class RegistrationFragment : Fragment() {
         lastName.addTextChangedListener(RegistrationFragmentHelper.getTextWatcher(this))
 
         registerButton.setOnClickListener {
-                    userApiClient
-                            .register(User(login.text.toString(), password.text.toString(), name.text.toString(), lastName.text.toString()))
-                            .enqueue(RegisterCallback(this.context, password.text.toString()))
-                }
+//                    writeFileInternalStorage(name.text.toString(),lastName.text.toString())
+            userApiClient
+                    .register(User(login.text.toString(), password.text.toString(), name.text.toString(), lastName.text.toString()))
+                    .enqueue(RegisterCallback(this.context, password.text.toString(), name.text.toString() + "\n" + lastName.text.toString()))
+        }
 
         backButton.setOnClickListener {
             (activity as AuthenticationActivity).goToLogin()
